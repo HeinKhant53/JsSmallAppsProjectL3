@@ -1,0 +1,45 @@
+body{
+    font-family: sans-serif;
+    height: 100vh;
+
+    background:  linear-gradient(rgba(0,0,0,1),rgba(0,0,0,0.5));
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    font-size: 40px;
+    color: #bbb;
+}
+span.txtani{
+    /* border-right: 2px solid #747474; */
+    padding-right: 5px;
+
+    animation: myani 0.75s infinite;
+}
+
+@keyframes myani {
+    from{
+        border: none;
+    }
+    to{
+        border-right: 2px solid #747474;
+    }
+}
+.red{
+    color: red;
+}
+
+.skyblue{
+    color: skyblue;
+}
+
+.viloet{
+    color: violet;
+}
+
+.yellow{
+    color: yellow;
+}
