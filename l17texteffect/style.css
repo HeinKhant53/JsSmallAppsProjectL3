@@ -36,10 +36,36 @@ span.txtani{
     color: skyblue;
 }
 
-.viloet{
+.violet{
     color: violet;
 }
 
 .yellow{
     color: yellow;
+}
+
+em{
+    color: #fff;
+    /* italic effect ma win aung */
+    font-style: unset;
+
+    animation-name: textlighting;
+    animation-duration: .8s;
+    /* text ko a sa ma ma paw auung lo */
+    animation-fill-mode: backwards;
+}
+
+@keyframes textlighting {
+    0%{
+        opacity: 0;
+    }
+
+    50%{
+        opacity: 0.5;
+        text-shadow: 0 0 10px #fff;
+    }
+
+    100%{
+        opacity: 1;
+    }
 }
