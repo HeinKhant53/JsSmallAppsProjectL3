@@ -13,7 +13,7 @@ const gettxtani = document.querySelector('.txtani');
 // console.log(colors[languages.indexOf('Nodejs')]);     //red
 
 //2
-// Generator Function (iterate from 0 to 3)
+// Generator Function (iterate from 0 to 3 and from 3 to 1)
 
 // function* abc(){
 //     yield 1;
@@ -22,7 +22,6 @@ const gettxtani = document.querySelector('.txtani');
 // }
 
 // const testnum = abc();
-
 // console.log(testnum.next().value); //1 
 // console.log(testnum.next().value); //2
 // console.log(testnum.next().value); //3
@@ -57,15 +56,18 @@ function* generator(){
 
 //3
 let genfun = generator();
-
-showwords(languages[genfun.next().value]);
+                    //0  -> Nodejs
+showwords(languages[genfun.next().value]); 
 
 function showwords(word){
+    //String is Character Array
     // console.log(word); //Nodejs
     // console.log(word[0]); //N
     // console.log(word[1]); //o
 
     gettxtani.textContent = '';
+
+    //6
     // gettxtani.className = colors[languages.indexOf(word)];
     gettxtani.classList.add(colors[languages.indexOf(word)]);
 
@@ -74,6 +76,7 @@ function showwords(word){
     // gettxtani.textContent = word[0]; //N
     // gettxtani.textContent = word[1]; //o
 
+                            //concat
     // gettxtani.textContent += word[0]; //N
     // gettxtani.textContent += word[1]; //No
 
@@ -123,24 +126,26 @@ function deletewords(){
 
 //7
 let gettxtlights = document.querySelectorAll('.text-light');
-console.log(gettxtlights);
+// console.log(gettxtlights);
 
 gettxtlights.forEach(function(gettxtlight){
-    console.log(gettxtlight);
+    // console.log(gettxtlight);
+    // console.log(gettxtlight.textContent);
+
 
     let arrtexts = gettxtlight.textContent.split('');
-    console.log(arrtexts);
+    // console.log(arrtexts);
 
     gettxtlight.textContent = '';
 
     arrtexts.forEach(function(arrtext,idx){
-        console.log(arrtext);
+        // console.log(arrtext);
 
         //emphasized
         let newem = document.createElement('em');
         newem.textContent = arrtext;
-        console.log(newem);
-        console.log(idx);
+        // console.log(newem);
+        // console.log(idx);
 
         newem.style.animationDelay = `${idx*0.05}s`;
 

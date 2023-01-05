@@ -1,0 +1,68 @@
+body{
+    font-family: sans-serif;
+
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    width: 400px;
+
+    background-color: #f4f4f4;
+
+    text-align:  center;
+
+    padding: 30px;
+    box-shadow: 0 5px 10px rbga(0,0,0,0.3);
+
+    position: relative;
+}
+
+h2{
+    padding: 0;
+    margin: 0;
+}
+
+.display{
+    color: #fff;
+    background-color: steelblue;
+
+    font-size: 35px;
+
+    padding: 10px;
+    margin: 10px 0;
+
+    display: none;
+}
+
+.control{
+    padding: 10px;
+}
+
+.btn{
+    color: #fff;
+    background-color: steelblue;
+
+    font-size: 15px;
+
+    padding: 8px;
+    border: none;
+    outline: none;
+    margin: 0 15px;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+.btn:active{
+    transform: scale(0.97);
+}
+
+.mode-btn{
+    position: absolute;
+    top: 10px;
+    right: 0;
+}
