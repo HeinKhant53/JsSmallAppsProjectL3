@@ -130,7 +130,7 @@ function updateprogress(e){
         // For Range
         const [currentTime,duration] = [e.target.currentTime,e.target.duration];
          
-        //cuz duration ka start yin not a number 
+        // cuz duration ka start yin not a number 
         if(getvideoscreen.currentTime === 0){
                 progress.value = 0;
         }else{
