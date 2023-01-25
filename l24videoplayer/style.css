@@ -101,6 +101,10 @@ body{
     margin-left: 10px;
 }
 
+.closefullscreen{
+    display: none;
+}
+
 .pannel{
     background-color: #000;
     color: #fff;

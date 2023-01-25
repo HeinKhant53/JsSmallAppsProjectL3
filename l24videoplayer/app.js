@@ -1,4 +1,5 @@
 //Get UI
+const getcontainer = document.querySelector('.container');
 const getvideoscreen =  document.getElementById('videoscreen');
 const prevbtn = document.getElementById('prev'),
         playbtn = document.getElementById('play'),
@@ -136,7 +137,72 @@ function updateprogress(e){
         }else{
                 progress.value = (currentTime/duration) * 100;
         }
+
+
+
+
+        let getmins = Math.floor(getvideoscreen.currentTime/60);
+
+        if(getmins < 10){
+                // getmins = '0' + getmins;
+                getmins = '0' + String(getmins);
+        }
+        console.log(getmins);
+
+
+        let getsecs = Math.floor(getvideoscreen.currentTime%60);
+
+        if(getsecs < 10){
+                //getsecs = '0' + getsecs;
+                getsecs = '0' + String(getsecs);
+        }
+        console.log(getsecs);
+
+        getdisplaytime.textContent = `${getmins}:${getsecs}`;
+}       
+
+
+
+
+function setprogress(){
+        // console.log('hay');
+        // console.log((progress.value*getvideoscreen.duration)/100);
+
+        // For Range
+        getvideoscreen.currentTime = (progress.value*getvideoscreen.duration)/100;
 }
+
+function openfullscreen(){
+        if(getcontainer.requestFullscreen){
+                getcontainer.requestFullscreen();
+        }else if(getcontainer.mozRequestFullscreen){
+                getcontainer.mozRequestFullscreen();
+        }else if(getcontainer.webkitRequestFullscreen){
+                getcontainer.webkitRequestFullscreen();
+        }else if(getcontainer.msRequestFullscreen){
+                getcontainer.msRequestFullscreen();
+        }
+
+        getopnfullscreen.style.display = 'none';
+        getclsfullscreen.style.display = 'inline-block';
+}
+
+function closefullscreen(){
+        if(document.exitFullscreen){
+                document.exitFullscreen();
+        }else if(document.mozCancelFullscreen){
+                document.mozCancelFullscreen();
+        }else if(document.webkitExitFullscreen){
+                document.webkitExitFullscreen();
+        }else if(document.msExitFullscreen){
+                document.msExitFullscreen();
+        }
+
+        getopnfullscreen.style.display = 'inline-block';
+        getclsfullscreen.style.display = 'none';
+}
+
+
 
 
 playbtn.addEventListener('click',playpausevdo);
@@ -148,6 +214,11 @@ stopbtn.addEventListener('click',stopvdo);
 //timeupdate -> for video,audio (video ye time)
 getvideoscreen.addEventListener('timeupdate',updateprogress);
 
+progress.addEventListener('click',setprogress);
+
+
+getopnfullscreen.addEventListener('click',openfullscreen);
+getclsfullscreen.addEventListener('click',closefullscreen);
 
 
 

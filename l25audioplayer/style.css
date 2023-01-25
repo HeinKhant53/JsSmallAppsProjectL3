@@ -1,0 +1,85 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    width: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.audioscreen{
+    cursor: pointer;
+}
+
+.controls{
+    width: 100%;
+    background-color: #222;
+    color: #fff;
+
+    padding: 12px 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ctrl-btn{
+    background: transparent;
+    color: #fff;
+
+    border: none;
+    outline: none;
+    margin: 0 5px;
+
+    cursor: pointer;
+}
+
+.progress-container{
+    width: 75%;
+    height: 4px;
+
+    background-color: #fff;
+
+    border-radius: 5px;
+    
+    overflow: hidden;
+
+    cursor: pointer;
+}
+
+.progress{
+    width: 0%;
+    height: 100%;
+
+    background-color: steelblue;
+}
+
+.volumeprogress{
+    margin: 0 1pz;
+}
+
+.ctrl-btn .fa-play{
+    color: steelblue;
+}
+.ctrl-btn .fa-stop{
+    color: tomato;
+}
+.ctrl-btn .fa-pause{
+    color: #fff;
+}
+
+.displaytime{
+    padding-right: 10px;
+}
