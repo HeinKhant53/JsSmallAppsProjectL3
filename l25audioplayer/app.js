@@ -1,5 +1,6 @@
-//Get UI
+//Get Ui
 const getaudioscreen = document.getElementById('audioscreen');
+
 const prevbtn = document.getElementById('prev'),
         playbtn = document.getElementById('play'),
         nextbtn = document.getElementById('next'),
@@ -11,15 +12,15 @@ const getprogressctn = document.getElementById('progress-container'),
 const getvolprogress = document.getElementById('volumeprogress');
 const getdisplaytime = document.getElementById('displaytime');
 
-const audios = ['sample1','sample2','sample3'];
+const audio = ['sample1','sample2','sample3'];
 
 let curridx = 0;
 
-// loadaudio(audios[curridx]);  //open
-//Note: time ko backward lote chin lo 
+loadaudio(audio[curridx]);
 
 function loadaudio(ado){
     getaudioscreen.src = `./source/${ado}.mp3`;
+
 }
 
 function playado(){
@@ -39,34 +40,38 @@ function pauseado(){
 function playpauseado(){
     if(getaudioscreen.paused){
         getaudioscreen.play();
+        // playado();
     }else{
         getaudioscreen.pause();
+        //pauseado();
     }
 }
 
 function previousado(){
     curridx--;
+
     if(curridx < 0){
-        curridx = audios.length-1;
+        curridx = audio.length-1;
     }
 
-    loadaudio(audios[curridx]);
+    loadaudio(audio[curridx]);
     playado();
 }
 
 function nextado(){
     curridx++;
-    if(curridx > audios.length-1){
+
+    if(curridx > audio.length-1){
         curridx = 0;
     }
 
-    loadaudio(audios[curridx]);
+    loadaudio(audio[curridx]);
     playado();
 }
 
 function stopado(){
     getaudioscreen.currentTime = 0;
-    getprogress.style.width = '0%';
+    progress.style.width = `0%`;
 
     pauseado();
 }
@@ -76,56 +81,62 @@ function updateprogress(e){
     const {duration} = e.target;
 
     if(getaudioscreen.currentTime === 0){
-        getprogress.style.width = '0%';
+        progress.style.width = `0%`;
     }else{
-        const progresspercent = (currentTime/duration) * 100;
-        getprogress.style.width = `${progresspercent}%`;
+        const progresspercent =(currentTime/duration) * 100;
+        progress.style.width = `${progresspercent}%`;
     }
 
-    //forward
-    // let mins = Math.floor((getaudioscreen.currentTime) / 60);
-    // let secs = Math.floor((getaudioscreen.currentTime) % 60);
+    // //forward
+    let mins = Math.floor(getaudioscreen.currentTime / 60 );
+    let secs = Math.floor(getaudioscreen.currentTime % 60 );
 
+    //backword
+    // let mins = Math.floor((duration - getaudioscreen.currentTime) / 60 );
+    // let secs = Math.floor((duration - getaudioscreen.currentTime) % 60 );
 
-    //backward
-    let mins = Math.floor((duration-getaudioscreen.currentTime) / 60);
-    let secs = Math.floor((duration-getaudioscreen.currentTime) % 60);
-
-    const minuteval = mins.toString().padStart(2,'0');
-    const secondval = secs.toString().padStart(2,0);
+    let minuteval = mins.toString().padStart(2,'0');
+    let secondval = secs.toString().padStart(2,0);
 
     getdisplaytime.innerText = `${minuteval}:${secondval}`;
-}
 
+
+}
 function setaudioprogress(e){
     const width = this.clientWidth;
     const clickx = e.offsetX;
     const duration = getaudioscreen.duration;
-    getaudioscreen.currentTime = (clickx/width) * duration;
 
+    getaudioscreen.currentTime = (clickx/width)*duration;
+
+    // getaudioscreen.currentTime = (+(progress.style.width) * getaudioscreen.duration) / 100;
 }
 
 function volumecontrol(){
+    //1 is default (100%)
+    //0.5 half value (50%)
+    //0 (0%)
 
-    //volume came from  audio /video api
-    getaudioscreen.volume = getvolprogress.value/100;
-    
-    // 1 is default (100%)
-    // 0.5 half value (50%)
-    // 0 mute (0%)
+    //volume came from audio api
+    getaudioscreen.volume = getvolprogress.value / 100;
+
 }
 
+
+//2
 getaudioscreen.addEventListener('play',playado);
 getaudioscreen.addEventListener('pause',pauseado);
+//4
+getaudioscreen.addEventListener('timeupdate',updateprogress);
 
+
+//1
 playbtn.addEventListener('click',playpauseado);
-
+//3
 prevbtn.addEventListener('click',previousado);
 nextbtn.addEventListener('click',nextado);
-
 stopbtn.addEventListener('click',stopado);
 
-getaudioscreen.addEventListener('timeupdate',updateprogress);
+//5
 getprogressctn.addEventListener('click',setaudioprogress);
-
 getvolprogress.addEventListener('change',volumecontrol);

@@ -1,0 +1,31 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: sans-serif;
+
+    height: 100vh;
+
+    background-color: #f4f4f4;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+}
+
+.form-control,.btn{
+    padding: 10px;
+}
+
+#game-container span{
+    display: block;
+
+    margin: 15px 0;
+}
+
+.mic-btn{
+    margin-bottom: 5px;
+}
